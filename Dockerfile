@@ -12,7 +12,7 @@ RUN apt update && apt-get update && apt-get install -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
+ENV PATH /root/.rbenv/shims:$PATH
 RUN mkdir -p "$(rbenv root)"/plugins
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 RUN RUBY_BUILD_SKIP_MIRROR=1 rbenv install $RUBY_VERSION
@@ -24,7 +24,6 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 
-#RUN rbenv exec gem install bundler:1.17.2
 RUN rbenv exec gem install bundler
 RUN rbenv exec bundle install
 COPY . .
@@ -32,4 +31,4 @@ COPY . .
 
 RUN rm -f /app/tmp/pids/server.pid
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle ", "exec", "rails", "s", "-b", "0.0.0.0"]
