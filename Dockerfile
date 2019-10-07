@@ -15,7 +15,7 @@ RUN apt update && apt-get update && apt-get install -y \
 RUN echo 'eval "$(rbenv init -)"' >> /root/.bashrc
 RUN mkdir -p "$(rbenv root)"/plugins
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-RUN rbenv install $RUBY_VERSION
+RUN RUBY_BUILD_SKIP_MIRROR=1 rbenv install $RUBY_VERSION
 RUN rbenv global $RUBY_VERSION
 RUN rbenv rehash
 
