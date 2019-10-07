@@ -21,10 +21,10 @@ Rebuild and rails s
 ```
 # build
 docker-compose build --no-cache
-# create database. execute migration. insert initialize data.
+# create database. migrate. load the data.
 docker-compose run web rake db:create
 docker-compose run web rake db:migrate
-docker-compose run web rake db:db:seed_fu
+docker-compose run web rake db:seed_fu
 # run in background
 docker-compose up -d
 ```

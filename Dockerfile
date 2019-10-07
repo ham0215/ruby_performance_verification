@@ -1,6 +1,6 @@
 FROM debian:10.1
 
-ENV RUBY_VERSION 2.6.3
+ENV RUBY_VERSION 2.6.5
 
 RUN apt update && apt-get update && apt-get install -y \
     build-essential \
