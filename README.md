@@ -17,10 +17,14 @@ Change ruby version in Dockerfile.
 ```
 ENV RUBY_VERSION x.y.z
 ```
+Update Gemfile.lock to empty.
+```
+cp /dev/null Gemfile.lock
+```
 Rebuild and rails s
 ```
 # build
-docker-compose build --no-cache
+docker-compose build
 # create database. migrate. load the data.
 docker-compose run web rake db:create
 docker-compose run web rake db:migrate

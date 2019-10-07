@@ -24,10 +24,9 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN rbenv exec gem install bundler
-RUN rbenv exec bundle install
+RUN gem install bundler
+RUN bundle install
 COPY . .
-#RUN yarn install --check-files
 
 RUN rm -f /app/tmp/pids/server.pid
 
