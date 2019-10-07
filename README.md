@@ -31,4 +31,11 @@ docker-compose up -d
 
 ## run performance verification
 ```
+$ ./bin/request_100.sh
+##################### (100%)
+---------------------------------------------------------
+Number of valid responses
+100
+Average response time
+0.0431709
 ```
