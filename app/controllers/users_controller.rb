@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
+
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
 
   # GET /users
   def index
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    @user = User.find_by(name: user_params[:name]) || User.find(params[:id])
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end
