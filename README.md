@@ -43,3 +43,8 @@ Number of valid responses
 Average response time
 0.0431709
 ```
+
+## memory_profiler
+```
+docker-compose logs -f
+```
