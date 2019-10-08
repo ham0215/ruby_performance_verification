@@ -9,7 +9,9 @@ services:
       - 3099:3000
     environment:
       EDITOR: vim
-      # RAILS_ENV: production
+      RAILS_ENV: production
+      SECRET_KEY_BASE: secret_key_base
+      RAILS_LOG_TO_STDOUT: 1
     depends_on:
       - db
     tty: true
